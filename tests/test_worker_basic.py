@@ -67,6 +67,7 @@ class TestWorkerBasic(unittest.TestCase):
 
 
     def test_worker_clears_variables(self):
+        worker = BasicUserParseWorker(None)
         empty = [ ]
         len_of_empty = len(empty)
 
@@ -74,5 +75,17 @@ class TestWorkerBasic(unittest.TestCase):
         len_to_crawl = len(worker.to_crawl)
 
         self.assertEqual(len_of_empty, len_to_crawl)
+
+
+    def add_multiple_links(self):
+        worker = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
+        worker.crawled = []
+
+        len_to_crawl_before = len(worker.to_crawl)
+
+        worker.add_links(["https://www.reddit.com/user/Chrikelnel", "https://www.google.ca", "https://hotmail.com"])
+        len_to_crawl_after = len(worker.to_crawl)
+
+        self.assertEqual(len_to_crawl_after, len_to_crawl_before+2)
 
  
