@@ -24,17 +24,21 @@ class BasicUserParseWorker(object):
     Given a username url, this worker finds all posts for that user and formats them
     """
 
-    original_target = None
-
-    to_crawl = []
-    crawled = []
-    max_links = 10
-    cur_links = 0
-    link_delay = 0.25
-
-    results = []
 
     def __init__(self, target):
+
+        self.original_target = None
+
+        self.to_crawl = []
+        self.crawled = []
+        self.max_links = 10
+        self.cur_links = 0
+        self.link_delay = 0.25
+
+        self.results = []
+
+
+
         if target:
             self.to_crawl.append(target)
             self.original_target = target
@@ -151,4 +155,4 @@ class BasicUserParseWorker(object):
         :return:
         """
         links = list(set(links))
-        [self.to_crawl.append(item) for item in links if item not in self.crawled and self.cur_links < self.max_links]
+        [self.to_crawl.append(item) for item in links if item not in self.crawled and self.cur_links < self.max_links and item not in self.to_crawl]
