@@ -53,25 +53,26 @@ class TestWorkerBasic(unittest.TestCase):
  
 
 
-## Fixed this
- def test_worker_add_links_in_crawled(self):
-        worker = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
-        worker.crawled = []
+    ## Fixed this
+     def test_worker_add_links_in_crawled(self):
+            worker = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
+            worker.crawled = []
 
-        len_to_crawl_before = len(worker.to_crawl)
+            len_to_crawl_before = len(worker.to_crawl)
 
-        worker.add_links(["https://www.reddit.com/user/Chrikelnel"])
-        len_to_crawl_after = len(worker.to_crawl)
+            worker.add_links(["https://www.reddit.com/user/Chrikelnel"])
+            len_to_crawl_after = len(worker.to_crawl)
 
-        self.assertEqual(len_to_crawl_after, len_to_crawl_before)
+            self.assertEqual(len_to_crawl_after, len_to_crawl_before)
 
 
-def test_worker_clears_variables(self):
-    empty = [ ]
-    len_of_empty = len(empty)
+    def test_worker_clears_variables(self):
+        empty = [ ]
+        len_of_empty = len(empty)
 
-    worker.to_crawl = []
-    len_to_crawl = len(worker.to_crawl)
+        worker.to_crawl = []
+        len_to_crawl = len(worker.to_crawl)
 
-    self.assertEqual(len_of_empty, len_to_crawl)
+        self.assertEqual(len_of_empty, len_to_crawl)
 
+ 
