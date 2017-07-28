@@ -53,7 +53,7 @@ class TestWorkerBasic(unittest.TestCase):
  
 
         
-# Fixed this
+# 3 additional tests below. Fixed test_worker_add_links, and made 2 more.
     def test_worker_add_links_in_crawled(self):
         worker = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
         worker.crawled = []
